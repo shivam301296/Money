@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -203,7 +204,9 @@ public class ExpenceReport extends AppCompatActivity {
 
 
 
-
+    {
+        TableLayout tl= new TableLayout(this);
+    }
 
 
 
