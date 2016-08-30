@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="profession_def">
+        <item>Select your profession</item>
+    </string-array>
+
+
+    <string-array name="item_cat">
+        <item>Select Catagery</item>
+        <item>Automobile</item>
+        <item>Entertainment</item>
+        <item>Family</item>
+        <item>Food</item>
+        <item>Health Care</item>
+        <item>Household</item>
+        <item>Insurance</item>
+        <item>Loans</item>
+        <item>Personal</item>
+        <item>Tax</item>
+        <item>Travel</item>
+        <item>Utilities</item>
+        <item>Vacation</item>
+        <item>Other</item>
+    </string-array>
+
+
+
+    <!--Don't change as these have been used in java-->
+    <string-array name="report_type_list">
+        <item>Today</item>
+        <item>Yesterday</item>
+        <item>This Week</item>
+        <item>Last Week</item>
+        <item>This Month</item>
+        <item>Last Month</item>
+    </string-array>
+
+
+
+
+</resources>

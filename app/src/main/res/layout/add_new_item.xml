@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:id="@+id/add_new_item_layout"
+              android:layout_margin="25dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:background="@color/buttonBack"
+        android:textColor="@color/buttonFore"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="Add New Item"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_bg"
+        android:hint="Enter item name"
+        android:id="@+id/itemName"
+        android:padding="10dp"
+        android:layout_margin="7dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_bg"
+        android:padding="10dp"
+        android:entries="@array/item_cat"
+        android:id="@+id/itemCat"
+        android:layout_margin="7dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:padding="10dp"
+            android:layout_margin="7dp"
+            android:hint="Price"
+            android:id="@+id/price"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:padding="10dp"
+            android:layout_margin="7dp"
+            android:hint="Max Price"
+            android:id="@+id/maxPrice"/>
+    </LinearLayout>
+
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_bg"
+        android:text="Necessity"
+        android:id="@+id/necessity"
+        android:padding="10dp"
+        android:layout_margin="7dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:padding="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/error"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="Save"
+            android:background="@color/buttonBack"
+            android:textColor="@color/buttonFore"
+            android:id="@+id/saveItem"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="Cancle"
+            android:background="@color/buttonBack"
+            android:textColor="@color/buttonFore"
+            android:id="@+id/cancle"/>
+    </LinearLayout>
+
+
+</LinearLayout>

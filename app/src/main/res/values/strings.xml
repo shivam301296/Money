@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Money</string>
+
+    <string name="nameT">Enter your name</string>
+    <string name="ageT">Select your age</string>
+    <string name="genderT">You are</string>
+
+</resources>
