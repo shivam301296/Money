@@ -8,6 +8,7 @@ import android.icu.text.DateTimePatternGenerator;
 import android.icu.text.RelativeDateTimeFormatter;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -101,9 +103,6 @@ public class ExpenceReport extends AppCompatActivity {
 
 
         int paddingTB=10,paddingRL=20;
-        LinearLayout.LayoutParams params= new LinearLayout.LayoutParams(LinearLayoutCompat
-                .LayoutParams
-                .MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT,1.0f);
 
         MyDate cd= new MyDate(new java.util.Date());
 
@@ -113,20 +112,17 @@ public class ExpenceReport extends AppCompatActivity {
         String qr= "SELECT * FROM expence";
         Cursor cur= db.rawQuery(qr, null);
 
-        LinearLayout tv[]=new LinearLayout[cur.getCount()];
-        int k=0;
+
+        TableLayout tl= new TableLayout(this);
+
 
         while (cur.moveToNext()){
 
             Timestamp ts= Timestamp.valueOf(cur.getString(0));
             MyDate dt=new MyDate(new Date(ts.getTime()));
 
-            //if(cd.getDay().equals(dt.getDay())&&cd.getMonth().equals(dt.getMonth())&&cd.getYear()
-             //       .equals(dt.getYear())) {
             if(true){
                 try {
-                    tv[k]= new LinearLayout(this);
-                    tv[k].setOrientation(LinearLayout.HORIZONTAL);
 
 
                     TextView datetv= new TextView(this);
@@ -134,30 +130,32 @@ public class ExpenceReport extends AppCompatActivity {
                             ()+":"+dt.getMinutes());
                     datetv.setPadding(paddingRL,paddingTB,paddingRL,paddingTB);
                     datetv.setBackgroundColor(Color.rgb(17,171,214));
-                    tv[k].addView(datetv);
 
                     TextView nametv= new TextView(this);
                     nametv.setText(cur.getString(1));
                     nametv.setPadding(paddingRL,paddingTB,paddingRL,paddingTB);
                     nametv.setBackgroundColor(Color.rgb(121,232,92));
-                    nametv.setLayoutParams(params);
-                    tv[k].addView(nametv);
 
                     TextView pricetv= new TextView(this);
                     pricetv.setText("\u20B9"+cur.getDouble(3));
                     pricetv.setPadding(paddingRL,paddingTB,paddingRL,paddingTB);
                     pricetv.setBackgroundColor(Color.rgb(236,164,230));
                     pricetv.setWidth(110);
-                    //nametv.setLayoutParams(params);
-                    tv[k].addView(pricetv);
+
+
+                    TableRow tr= new TableRow(this);
+                    tr.addView(datetv);
+                    tr.addView(nametv);
+                    tr.addView(pricetv);
+                    tl.addView(tr);
 
 
 
 
 
 
-                    playout.addView(tv[k]);
-                    k++;
+                    //------------------------------------------------
+
                 } catch (Exception e) {
                     display(e + "");
                 }
@@ -167,22 +165,19 @@ public class ExpenceReport extends AppCompatActivity {
             }
 
         }
-        LinearLayout tl=new LinearLayout(this);
-        tl.setOrientation(LinearLayout.HORIZONTAL);
+
+
         TextView aa= new TextView(this);
         aa.setText("Total");
         aa.setPadding(paddingRL,paddingTB+10,paddingRL,paddingTB);
         aa.setBackgroundColor(Color.rgb(19,50,97));
         aa.setTextColor(Color.YELLOW);
-        tl.addView(aa);
 
         TextView bb= new TextView(this);
         bb.setText("");
         bb.setPadding(paddingRL,paddingTB+10,paddingRL,paddingTB);
         bb.setBackgroundColor(Color.rgb(19,50,97));
         bb.setTextColor(Color.YELLOW);
-        bb.setLayoutParams(params);
-        tl.addView(bb);
 
         TextView cc= new TextView(this);
         cc.setText("\u20B9"+total);
@@ -190,11 +185,12 @@ public class ExpenceReport extends AppCompatActivity {
         cc.setBackgroundColor(Color.rgb(19,50,97));
         cc.setTextColor(Color.YELLOW);
         cc.setWidth(100);
-        tl.addView(cc);
 
-
-
-
+        TableRow totRow= new TableRow(this);
+        totRow.addView(aa);
+        totRow.addView(bb);
+        totRow.addView(cc);
+        tl.addView(totRow);
 
 
         playout.addView(tl);
@@ -204,9 +200,6 @@ public class ExpenceReport extends AppCompatActivity {
 
 
 
-    {
-        TableLayout tl= new TableLayout(this);
-    }
 
 
 
