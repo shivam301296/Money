@@ -102,7 +102,8 @@ public class ExpenceReport extends AppCompatActivity {
 
 
 
-        int paddingTB=10,paddingRL=20;
+        int paddingTB=12,paddingRL=15;
+        int fontSize=12;
 
         MyDate cd= new MyDate(new java.util.Date());
 
@@ -130,16 +131,19 @@ public class ExpenceReport extends AppCompatActivity {
                             ()+":"+dt.getMinutes());
                     datetv.setPadding(paddingRL,paddingTB,paddingRL,paddingTB);
                     datetv.setBackgroundColor(Color.rgb(17,171,214));
+                    datetv.setTextSize(fontSize);
 
                     TextView nametv= new TextView(this);
                     nametv.setText(cur.getString(1));
                     nametv.setPadding(paddingRL,paddingTB,paddingRL,paddingTB);
                     nametv.setBackgroundColor(Color.rgb(121,232,92));
+                    nametv.setTextSize(fontSize);
 
                     TextView pricetv= new TextView(this);
                     pricetv.setText("\u20B9"+cur.getDouble(3));
                     pricetv.setPadding(paddingRL,paddingTB,paddingRL,paddingTB);
                     pricetv.setBackgroundColor(Color.rgb(236,164,230));
+                    pricetv.setTextSize(fontSize);
                     pricetv.setWidth(110);
 
 
@@ -172,12 +176,14 @@ public class ExpenceReport extends AppCompatActivity {
         aa.setPadding(paddingRL,paddingTB+10,paddingRL,paddingTB);
         aa.setBackgroundColor(Color.rgb(19,50,97));
         aa.setTextColor(Color.YELLOW);
+        aa.setTextSize(fontSize);
 
         TextView bb= new TextView(this);
         bb.setText("");
         bb.setPadding(paddingRL,paddingTB+10,paddingRL,paddingTB);
         bb.setBackgroundColor(Color.rgb(19,50,97));
         bb.setTextColor(Color.YELLOW);
+        bb.setTextSize(fontSize);
 
         TextView cc= new TextView(this);
         cc.setText("\u20B9"+total);
@@ -185,6 +191,7 @@ public class ExpenceReport extends AppCompatActivity {
         cc.setBackgroundColor(Color.rgb(19,50,97));
         cc.setTextColor(Color.YELLOW);
         cc.setWidth(100);
+        cc.setTextSize(fontSize);
 
         TableRow totRow= new TableRow(this);
         totRow.addView(aa);

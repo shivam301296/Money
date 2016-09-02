@@ -55,6 +55,9 @@ public class AddExpence extends AppCompatActivity {
 
 
     public void dbToDisplay(){
+
+
+        //Adding Items
         String qr="SELECT * FROM things";
         Cursor cur= db.rawQuery(qr,null);
         while (cur.moveToNext()){
@@ -63,6 +66,12 @@ public class AddExpence extends AppCompatActivity {
             double price=cur.getDouble(3);
             addItemView(name,price,cat);
         }
+
+        //Adding space at bottom
+        TextView space= new TextView(this);
+        space.setHeight(50);
+        layout.addView(space);
+
     }
 
 
@@ -71,7 +80,7 @@ public class AddExpence extends AppCompatActivity {
 
     public void addItemView(String nm, double pric, String cat){
         int paddingLR=6;
-        int paddingTB=7;
+        int paddingTB=12;
         int textS=15;
 
         LinearLayout.LayoutParams paramsName= new LinearLayout.LayoutParams(LinearLayoutCompat
@@ -87,8 +96,9 @@ public class AddExpence extends AppCompatActivity {
 
         LinearLayout newLayout=new LinearLayout(this);
         newLayout.setOrientation(LinearLayout.HORIZONTAL);
-        newLayout.setBackground(rs.getDrawable(R.drawable.layout_bg));
-        newLayout.setPadding(paddingLR,paddingTB,paddingLR,paddingTB);
+        //newLayout.setBackground(rs.getDrawable(R.drawable.layout_bg));
+        newLayout.setBackgroundColor(Color.rgb(74,20,109));
+        newLayout.setPadding(paddingLR,paddingTB-3,paddingLR,paddingTB-3);
 
 //        ImageView imageView= new ImageView(this);
 //        Drawable d= rs.getDrawable(R.drawable.trash);
@@ -104,13 +114,6 @@ public class AddExpence extends AppCompatActivity {
         name.setText(nm);
         newLayout.addView(name);
 
-//        TextView price= new TextView(this);
-//        price.setText(pric+"");
-//        price.setTextSize(textS);
-//        price.setLayoutParams(paramsElse);
-//        price.setBackgroundColor(Color.GREEN);
-//        price.setPadding(5,paddingTB,0,paddingTB);
-//        newLayout.addView(price);
 
         final TextView rsSy= new TextView(this);
         rsSy.setText("\u20B9");
@@ -136,10 +139,9 @@ public class AddExpence extends AppCompatActivity {
         butn.setTextSize(textS);
         butn.setLayoutParams(paramsElse);
         butn.setHeight(price.getHeight());
-        //butn.setBackground(rs.getDrawable(R.drawable.layout_bg));
-        butn.setBackgroundColor(Color.rgb(85,20,103));
+        butn.setBackgroundColor(Color.YELLOW);
         butn.setPadding(5,paddingTB,0,paddingTB);
-        butn.setTextColor(Color.YELLOW);
+        butn.setTextColor(Color.BLACK);
         newLayout.addView(butn);
 
 
@@ -169,6 +171,14 @@ public class AddExpence extends AppCompatActivity {
             }
         });
 
+    }
+
+
+
+
+    public void addNewItem( View v){
+        AddItem adi= new AddItem(this, this);
+        adi.add();
     }
 
 

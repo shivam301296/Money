@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         sp= PreferenceManager.getDefaultSharedPreferences(this);
         boolean isFirst= sp.getBoolean("isFirstTime",true);
 
@@ -63,99 +65,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     public void addItem(View v){
-        final AlertDialog.Builder builder= new AlertDialog.Builder(this);
 
-        LayoutInflater inflater= this.getLayoutInflater();
+        AddItem adi= new AddItem(this, this);
+        adi.add();
 
-        View layout= inflater.inflate(R.layout.add_new_item, null);
-        builder.setView(layout);
-
-        final AlertDialog ad= builder.create();
-        ad.show();
-
-
-        final EditText inameEt= (EditText) layout.findViewById(R.id.itemName);
-        final Spinner icatSpi= (Spinner) layout.findViewById(R.id.itemCat);
-        final EditText priceEt= (EditText) layout.findViewById(R.id.price);
-        final EditText maxPriceEt= (EditText) layout.findViewById(R.id.maxPrice);
-        final TextView error= (TextView) layout.findViewById(R.id.error);
-        final CheckBox cb= (CheckBox) layout.findViewById(R.id.necessity);
-        Button save=(Button) layout.findViewById(R.id.saveItem);
-        Button cancle=(Button) layout.findViewById(R.id.cancle);
-
-
-        cancle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ad.dismiss();
-            }
-        });
-
-
-
-
-        final String cat[]= new String[1];
-        icatSpi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String catag= adapterView.getItemAtPosition(i).toString();
-                cat[0]=catag;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-        save.setOnClickListener(new View.OnClickListener() {
-            String name,catagary;
-            double price, maxPrice;
-            boolean isNece;
-            @Override
-            public void onClick(View view) {
-                isNece= cb.isChecked();
-                name=inameEt.getText().toString();
-                if(name.equals("")){
-                    error.setText("Please enter name");
-                    return;
-                }
-                if(cat[0].equals("Select Catagery")){
-                    error.setText("Please select Catagary");
-                    return;
-                }
-                catagary= cat[0];
-                try{
-                    price= Double.parseDouble(priceEt.getText().toString());
-                }catch (Exception e){error.setText("Invalid price"); return;}
-
-                if(!maxPriceEt.getText().toString().equals("")){
-                    try{
-                        maxPrice= Double.parseDouble(maxPriceEt.getText().toString());
-                    }catch (Exception e){error.setText("Invalid Max Price"); return;}
-                }
-                //All data is correct. Now save it in DB
-                error.setText("");
-
-                String qr="INSERT INTO things VALUES('"+name+"','"+catagary+"',"+(isNece?1:0)+"," +
-                        ""+price+"," +
-                        ""+maxPrice+",null,null)";
-                try{
-                    db.execSQL(qr);
-                    ad.dismiss();
-                    displayCustom("Item Saved");
-                }catch (Exception e){display("Error "+e);}
-
-
-
-            }//onClickEND
-        });
-
-    }//addItemEND
+    }
 
 
 
