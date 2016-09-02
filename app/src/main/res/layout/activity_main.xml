@@ -58,6 +58,14 @@
             android:onClick="viewReport"
             android:layout_margin="10dp"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:text="Setting"
+            android:onClick="setting"
+            android:layout_margin="10dp"/>
+
 
 
 

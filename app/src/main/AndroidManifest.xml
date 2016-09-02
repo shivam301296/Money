@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".ExpenceReport">
         </activity>
+        <activity android:name=".Setting">
+        </activity>
     </application>
 
 </manifest>

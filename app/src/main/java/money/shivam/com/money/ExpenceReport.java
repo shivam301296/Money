@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,26 +87,39 @@ public class ExpenceReport extends AppCompatActivity {
 
 
 
+    private boolean shouldShow(Date dt){
+
+        switch (reportType){
+            case "Today":
+                return MyDate.isToday(dt);
+            case "Yesterday":
+                return MyDate.isYesterday(dt);
+            case "This Week":
+                return MyDate.isOfCurrentWeek(dt);
+            case "Last Week":
+                return MyDate.isOfLastWeek(dt);
+            case "This Month":
+                break;
+            case "Last Month":
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
 
 
 
 
     private void showReport(){
 
-        String tqr="SELECT SUM(price) FROM expence";
-        Cursor tcur=db.rawQuery(tqr,null);
         double total=0.0;
-        if(tcur.moveToNext()) {
-            total= tcur.getDouble(0);
-            displayCustom(total + "");
-        }
-
-
 
         int paddingTB=12,paddingRL=15;
         int fontSize=12;
 
-        MyDate cd= new MyDate(new java.util.Date());
+        //MyDate cd= new MyDate(new java.util.Date());
 
 
         ((ViewGroup)playout).removeAllViews();
@@ -120,9 +134,9 @@ public class ExpenceReport extends AppCompatActivity {
         while (cur.moveToNext()){
 
             Timestamp ts= Timestamp.valueOf(cur.getString(0));
-            MyDate dt=new MyDate(new Date(ts.getTime()));
-
-            if(true){
+            Date jd= new Date(ts.getTime());
+            MyDate dt=new MyDate(jd);
+            if(shouldShow(jd)){
                 try {
 
 
@@ -140,7 +154,9 @@ public class ExpenceReport extends AppCompatActivity {
                     nametv.setTextSize(fontSize);
 
                     TextView pricetv= new TextView(this);
-                    pricetv.setText("\u20B9"+cur.getDouble(3));
+                    double pri=cur.getDouble(3);
+                    total+=pri;
+                    pricetv.setText("\u20B9"+pri);
                     pricetv.setPadding(paddingRL,paddingTB,paddingRL,paddingTB);
                     pricetv.setBackgroundColor(Color.rgb(236,164,230));
                     pricetv.setTextSize(fontSize);

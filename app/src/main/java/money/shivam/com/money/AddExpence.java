@@ -179,6 +179,7 @@ public class AddExpence extends AppCompatActivity {
     public void addNewItem( View v){
         AddItem adi= new AddItem(this, this);
         adi.add();
+        //dbToDisplay();
     }
 
 
