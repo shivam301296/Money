@@ -22,11 +22,10 @@ Just copy to APK file to your android smartphone, install it and Run
 
 * **Shivam Agrawal** - [Rising Hope](http://risinghopeapps.weebly.com/)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * It is one of my initial Android projects developed while I was learning it.
+
+## License 
+* see [LICENSE](/LICENSE) file
 
